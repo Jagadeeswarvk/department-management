@@ -13,6 +13,6 @@ public class HelloController {
     }
     @GetMapping("/hello")
     public String hello() {
-        return "Welcome to hello controller";
+        return "--------------------------";
     }
 }
