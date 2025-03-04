@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+<div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-700">Departments</h2>
+        <a href="/department/new" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add Department</a>
+    </div>
+    <table class="w-full border border-gray-300">
+        <thead>
+        <tr class="bg-gray-200">
+            <th class="border px-4 py-2 text-center">departmentId</th>
+            <th class="border px-4 py-2 text-center">departmentName</th>
+            <th class="border px-4 py-2 text-center">Address</th>
+            <th class="border px-4 py-2 text-center">departmentCode</th>
+            <th class="border px-4 py-2 text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="department : ${departmentList}" class="bg-white hover:bg-gray-100">
+            <td class="border px-4 py-2 text-center" th:text="${department.departmentId}"></td>
+            <td class="border px-4 py-2 text-center" th:text="${department.departmentName}"></td>
+            <td class="border px-4 py-2 text-center" th:text="${department.departmentAddress}"></td>
+            <td class="border px-4 py-2 text-center" th:text="${department.departmentCode}"></td>
+            <td class="border px-4 py-2 text-center">
+                <a th:href="@{/department/edit/{id}(id=${department.departmentId})}" class="text-blue-500 hover:underline mr-4">Edit</a>
+                <form th:action="@{/department/delete/{id}(id=${department.departmentId})}" method="post" class="inline-block">
+                    <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
