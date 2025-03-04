@@ -11,4 +11,8 @@ public class HelloController {
     public String helloController() {
         return "Welcome to Spring Boot Demo";
     }
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello World";
+    }
 }
